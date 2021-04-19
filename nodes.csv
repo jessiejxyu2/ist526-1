@@ -1,4 +1,4 @@
-name,id,books,score,color
+label,id,books,score,color
 Executive Director,0,4,21,blue
 Vice President,1,2,40,blue
 Vice President,2,1,107,blue
