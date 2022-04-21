@@ -1,0 +1,295 @@
+Indent Level,Item and Group,Weight,Parent
+0,All items,100,
+1,Food and beverages,15.157,All items
+2,Food,14.119,Food and beverages
+3,Food at home,7.772,Food
+4,Cereals and bakery products,1.001,Food at home
+5,Cereals and cereal products,0.308,Cereals and bakery products
+6,Flour and prepared flour mixes,0.041,Cereals and cereal products
+6,Breakfast cereal,0.142,Cereals and cereal products
+6,"Rice, pasta, cornmeal",0.124,Cereals and cereal products
+5,Bakery products,0.693,Cereals and bakery products
+6,Bread,0.2,Bakery products
+6,"Fresh biscuits, rolls, muffins",0.101,Bakery products
+6,"Cakes, cupcakes, and cookies",0.178,Bakery products
+6,Other bakery products,0.214,Bakery products
+4,"Meats, poultry, fish, and eggs",1.736,Food at home
+5,"Meats, poultry, and fish",1.637,"Meats, poultry, fish, and eggs"
+6,Meats,1.026,"Meats, poultry, and fish"
+7,Beef and veal,0.471,Meats
+8,Uncooked ground beef,0.173,Beef and veal
+8,Uncooked beef roasts,0.073,Beef and veal
+8,Uncooked beef steaks,0.18,Beef and veal
+8,Uncooked other beef and veal,0.044,Beef and veal
+7,Pork,0.322,Meats
+8,"Bacon, breakfast sausage, and related products",0.134,Pork
+8,Ham,0.062,Pork
+8,Pork chops,0.052,Pork
+8,"Other pork including roasts, steaks, and ribs",0.075,Pork
+7,Other meats,0.233,Meats
+6,Poultry,0.333,"Meats, poultry, and fish"
+7,Chicken,0.273,Poultry
+7,Other uncooked poultry including turkey,0.06,Poultry
+6,Fish and seafood,0.278,"Meats, poultry, and fish"
+7,Fresh fish and seafood,0.14,Fish and seafood
+7,Processed fish and seafood,0.138,Fish and seafood
+5,Eggs,0.099,"Meats, poultry, fish, and eggs"
+4,Dairy and related products,0.792,Food at home
+5,Milk,0.218,Dairy and related products
+5,Cheese and related products,0.266,Dairy and related products
+5,Ice cream and related products,0.111,Dairy and related products
+5,Other dairy and related products,0.197,Dairy and related products
+4,Fruits and vegetables,1.341,Food at home
+5,Fresh fruits and vegetables,1.053,Fruits and vegetables
+6,Fresh fruits,0.538,Fresh fruits and vegetables
+7,Apples,0.073,Fresh fruits
+7,Bananas,0.074,Fresh fruits
+7,Citrus fruits,0.136,Fresh fruits
+7,Other fresh fruits,0.254,Fresh fruits
+6,Fresh vegetables,0.516,Fresh fruits and vegetables
+7,Potatoes,0.075,Fresh vegetables
+7,Lettuce,0.068,Fresh vegetables
+7,Tomatoes,0.082,Fresh vegetables
+7,Other fresh vegetables,0.29,Fresh vegetables
+5,Processed fruits and vegetables,0.288,Fruits and vegetables
+6,Canned fruits and vegetables,0.15,Processed fruits and vegetables
+6,Frozen fruits and vegetables,0.086,Processed fruits and vegetables
+6,Other processed fruits and vegetables including dried,0.052,Processed fruits and vegetables
+4,Nonalcoholic beverages and beverage materials,0.93,Food at home
+5,Juices and nonalcoholic drinks,0.666,Nonalcoholic beverages and beverage materials
+6,Carbonated drinks,0.278,Juices and nonalcoholic drinks
+6,Frozen noncarbonated juices and drinks,0.006,Juices and nonalcoholic drinks
+6,Nonfrozen noncarbonated juices and drinks,0.382,Juices and nonalcoholic drinks
+5,Beverage materials including coffee and tea,0.264,Nonalcoholic beverages and beverage materials
+6,Coffee,0.169,Beverage materials including coffee and tea
+6,Other beverage materials including tea,0.095,Beverage materials including coffee and tea
+4,Other food at home,1.972,Food at home
+5,Sugar and sweets,0.27,Other food at home
+6,Sugar and sugar substitutes,0.037,Sugar and sweets
+6,Candy and chewing gum,0.18,Sugar and sweets
+6,Other sweets,0.053,Sugar and sweets
+5,Fats and oils,0.212,Other food at home
+6,Butter and margarine,0.063,Fats and oils
+6,Salad dressing,0.051,Fats and oils
+6,Other fats and oils including peanut butter,0.098,Fats and oils
+5,Other foods,1.489,Other food at home
+6,Soups,0.089,Other foods
+6,Frozen and freeze dried prepared foods,0.259,Other foods
+6,Snacks,0.34,Other foods
+6,"Spices, seasonings, condiments, sauces",0.29,Other foods
+6,Baby food,0.042,Other foods
+6,Other miscellaneous foods,0.469,Other foods
+3,Food away from home,6.347,Food
+4,Full service meals and snacks,3.176,Food away from home
+4,Limited service meals and snacks,2.787,Food away from home
+4,Food at employee sites and schools,0.13,Food away from home
+4,Food from vending machines and mobile vendors,0.08,Food away from home
+4,Other food away from home,0.174,Food away from home
+2,Beverages,1.038,Food and beverages
+3,Alcoholic beverages,1.038,Beverages
+4,Alcoholic beverages at home,0.58,Alcoholic beverages
+5,"Beer, ale, and other malt beverages at home",0.223,Alcoholic beverages at home
+5,Distilled spirits at home,0.094,Alcoholic beverages at home
+5,Wine at home,0.263,Alcoholic beverages at home
+4,Alcoholic beverages away from home,0.458,Alcoholic beverages
+1,Housing,42.385,All items
+2,Shelter,33.316,Housing
+3,Rent of primary residence,7.862,Shelter
+3,Lodging away from home,0.825,Shelter
+4,"Housing at school, excluding board",0.118,Lodging away from home
+4,Other lodging away from home including hotels and motels,0.707,Lodging away from home
+3,Owners' equivalent rent of residences,24.263,Shelter
+4,Owners' equivalent rent of primary residence,23.044,Owners' equivalent rent of residences
+4,Unsampled owners' equivalent rent of secondary residences,1.218,Owners' equivalent rent of residences
+3,Tenants' and household insurance,0.366,Shelter
+2,Fuels and utilities,4.387,Housing
+3,Household energy,3.28,Fuels and utilities
+4,Fuel oil and other fuels,0.145,Household energy
+5,Fuel oil,0.084,Fuel oil and other fuels
+5,"Propane, kerosene, and firewood",0.061,Fuel oil and other fuels
+4,Energy services,3.135,Household energy
+5,Electricity,2.425,Energy services
+5,Utility (piped) gas service,0.71,Energy services
+3,Water and sewer and trash collection services,1.107,Fuels and utilities
+4,Water and sewerage maintenance,0.81,Water and sewer and trash collection services
+4,Garbage and trash collection,0.297,Water and sewer and trash collection services
+2,Household furnishings and operations,4.682,Housing
+3,Window and floor coverings and other linens,0.271,Household furnishings and operations
+4,Floor coverings,0.062,Window and floor coverings and other linens
+4,Window coverings,0.058,Window and floor coverings and other linens
+4,Other linens,0.151,Window and floor coverings and other linens
+3,Furniture and bedding,0.944,Household furnishings and operations
+4,Bedroom furniture,0.329,Furniture and bedding
+4,"Living room, kitchen, and dining room furniture",0.454,Furniture and bedding
+4,Other furniture,0.152,Furniture and bedding
+4,Unsampled furniture,0.009,Furniture and bedding
+3,Appliances,0.22,Household furnishings and operations
+4,Major appliances,0.078,Appliances
+4,Other appliances,0.14,Appliances
+4,Unsampled appliances,0.003,Appliances
+3,Other household equipment and furnishings,0.535,Household furnishings and operations
+4,"Clocks, lamps, and decorator items",0.313,Other household equipment and furnishings
+4,Indoor plants and flowers,0.093,Other household equipment and furnishings
+4,Dishes and flatware,0.052,Other household equipment and furnishings
+4,Nonelectric cookware and tableware,0.077,Other household equipment and furnishings
+3,"Tools, hardware, outdoor equipment and supplies",0.892,Household furnishings and operations
+4,"Tools, hardware and supplies",0.243,"Tools, hardware, outdoor equipment and supplies"
+4,Outdoor equipment and supplies,0.459,"Tools, hardware, outdoor equipment and supplies"
+4,"Unsampled tools, hardware, outdoor equipment and supplies",0.19,"Tools, hardware, outdoor equipment and supplies"
+3,Housekeeping supplies,0.922,Household furnishings and operations
+4,Household cleaning products,0.367,Housekeeping supplies
+4,Household paper products,0.235,Housekeeping supplies
+4,Miscellaneous household products,0.32,Housekeeping supplies
+3,Household operations,0.899,Household furnishings and operations
+4,Domestic services,0.302,Household operations
+4,Gardening and lawncare services,0.31,Household operations
+4,"Moving, storage, freight expense",0.091,Household operations
+4,Repair of household items,0.116,Household operations
+4,Unsampled household operations,0.08,Household operations
+1,Apparel,2.663,All items
+2,Men's and boys' apparel,0.666,Apparel
+3,Men's apparel,0.532,Men's and boys' apparel
+4,"Men's suits, sport coats, and outerwear",0.088,Men's apparel
+4,"Men''s underwear, nightwear, swimwear, and accessories",0.158,Men's apparel
+4,Men's shirts and sweaters,0.15,Men's apparel
+4,Men's pants and shorts,0.13,Men's apparel
+4,Unsampled men's apparel,0.005,Men's apparel
+3,Boys' apparel,0.134,Men's and boys' apparel
+2,Women's and girls' apparel,1.075,Apparel
+3,Women's apparel,0.875,Women's and girls' apparel
+4,Women's outerwear,0.062,Women's apparel
+4,Women's dresses,0.092,Women's apparel
+4,Women's suits and separates,0.446,Women's apparel
+4,"Women's underwear, nightwear, sportswear, and accessories",0.265,Women's apparel
+4,Unsampled women's apparel,0.009,Women's apparel
+3,Girls' apparel,0.2,Women's and girls' apparel
+2,Footwear,0.644,Apparel
+3,Men's footwear,0.224,Footwear
+3,Boys' and girls' footwear,0.136,Footwear
+3,Women's footwear,0.284,Footwear
+2,Infants' and toddlers' apparel,0.125,Apparel
+2,Jewelry and watches,0.153,Apparel
+3,Watches,0.04,Jewelry and watches
+3,Jewelry,0.114,Jewelry and watches
+1,Transportation,15.16,All items
+2,Private transportation,14.055,Transportation
+3,New and used motor vehicles,7.525,Private transportation
+4,New vehicles,3.756,New and used motor vehicles
+4,Used cars and trucks,2.75,New and used motor vehicles
+4,Leased cars and trucks,0.641,New and used motor vehicles
+4,Car and truck rental,0.134,New and used motor vehicles
+4,Unsampled new and used motor vehicles,0.244,New and used motor vehicles
+3,Motor fuel,2.875,Private transportation
+4,Gasoline (all types),2.811,Motor fuel
+4,Other motor fuels,0.064,Motor fuel
+3,Motor vehicle parts and equipment,0.393,Private transportation
+4,Tires,0.249,Motor vehicle parts and equipment
+4,Vehicle accessories other than tires,0.144,Motor vehicle parts and equipment
+3,Motor vehicle maintenance and repair,1.099,Private transportation
+4,Motor vehicle body work,0.059,Motor vehicle maintenance and repair
+4,Motor vehicle maintenance and servicing,0.635,Motor vehicle maintenance and repair
+4,Motor vehicle repair,0.345,Motor vehicle maintenance and repair
+4,Unsampled service policies,0.06,Motor vehicle maintenance and repair
+3,Motor vehicle insurance,1.598,Private transportation
+3,Motor vehicle fees,0.565,Private transportation
+4,State motor vehicle registration and license fees,0.297,Motor vehicle fees
+4,Parking and other fees,0.254,Motor vehicle fees
+4,Unsampled motor vehicle fees,0.015,Motor vehicle fees
+2,Public transportation,1.105,Transportation
+3,Airline fares,0.633,Public transportation
+3,Other intercity transportation,0.182,Public transportation
+3,Intracity transportation,0.287,Public transportation
+3,Unsampled public transportation,0.003,Public transportation
+1,Medical care,8.87,All items
+2,Medical care commodities,1.58,Medical care
+3,Medicinal drugs,1.515,Medical care commodities
+4,Prescription drugs,1.141,Medicinal drugs
+4,Nonprescription drugs,0.374,Medicinal drugs
+3,Medical equipment and supplies,0.066,Medical care commodities
+2,Medical care services,7.289,Medical care
+3,Professional services,3.662,Medical care services
+4,Physicians' services,1.817,Professional services
+4,Dental services,1.005,Professional services
+4,Eyeglasses and eye care,0.365,Professional services
+4,Services by other medical professionals,0.474,Professional services
+3,Hospital and related services,2.419,Medical care services
+4,Hospital services,2.221,Hospital and related services
+4,Nursing homes and adult day services,0.124,Hospital and related services
+4,Care of invalids and elderly at home,0.073,Hospital and related services
+3,Health insurance,1.209,Medical care services
+1,Recreation,5.797,All items
+2,Video and audio,1.537,Recreation
+3,Televisions,0.091,Video and audio
+3,Cable and satellite television service,1.192,Video and audio
+3,Other video equipment,0.042,Video and audio
+3,"Video discs and other media, including rental of video",0.076,Video and audio
+3,Audio equipment,0.079,Video and audio
+3,Recorded music and music subscriptions,0.045,Video and audio
+3,Unsampled video and audio,0.012,Video and audio
+2,"Pets, pet products and services",1.192,Recreation
+3,Pets and pet products,0.632,"Pets, pet products and services"
+3,Pet services including veterinary,0.56,"Pets, pet products and services"
+2,Sporting goods,0.604,Recreation
+3,Sports vehicles including bicycles,0.361,Sporting goods
+3,Sports equipment,0.232,Sporting goods
+3,Unsampled sporting goods,0.01,Sporting goods
+2,Photography,0.071,Recreation
+3,Photographic equipment and supplies,0.026,Photography
+3,Photographers and photo processing,0.044,Photography
+3,Unsampled photography,0.001,Photography
+2,Other recreational goods,0.356,Recreation
+3,Toys,0.274,Other recreational goods
+3,"Sewing machines, fabric and supplies",0.02,Other recreational goods
+3,Music instruments and accessories,0.046,Other recreational goods
+3,Unsampled recreation commodities,0.016,Other recreational goods
+2,Other recreation services,1.916,Recreation
+3,"Club membership for shopping clubs, fraternal, or other organizations, or participant sports fees",0.689,Other recreation services
+3,Admissions,0.688,Other recreation services
+3,Fees for lessons or instructions,0.218,Other recreation services
+3,Unsampled recreation services,0.321,Other recreation services
+2,Recreational reading materials,0.12,Recreation
+3,Newspapers and magazines,0.068,Recreational reading materials
+3,Recreational books,0.05,Recreational reading materials
+3,Unsampled recreational reading materials,0.002,Recreational reading materials
+1,Education and communication,6.81,All items
+2,Education,3.033,Education and communication
+3,Educational books and supplies,0.109,Education
+3,"Tuition, other school fees, and childcare",2.924,Education
+4,College tuition and fees,1.569,"Tuition, other school fees, and childcare"
+4,Elementary and high school tuition and fees,0.431,"Tuition, other school fees, and childcare"
+4,Child care and nursery school,0.768,"Tuition, other school fees, and childcare"
+4,Technical and business school tuition and fees,0.037,"Tuition, other school fees, and childcare"
+4,"Unsampled tuition, other school fees, and childcare",0.119,"Tuition, other school fees, and childcare"
+2,Communication,3.777,Education and communication
+3,Postage and delivery services,0.111,Communication
+4,Postage,0.101,Postage and delivery services
+4,Delivery services,0.01,Postage and delivery services
+3,Information and information processing,3.666,Communication
+4,Telephone services,2.369,Information and information processing
+5,Wireless telephone services,1.96,Telephone services
+5,Land-line telephone services,0.41,Telephone services
+4,"Information technology, hardware and services",1.297,Information and information processing
+5,"Computers, peripherals, and smart home assistant devices",0.297,"Information technology, hardware and services"
+5,Computer software and accessories,0.018,"Information technology, hardware and services"
+5,Internet services and electronic information providers,0.893,"Information technology, hardware and services"
+5,"Telephone hardware, calculators, and other consumer information items",0.077,"Information technology, hardware and services"
+5,Unsampled information and information processing,0.012,"Information technology, hardware and services"
+1,Other goods and services,3.159,All items
+2,Tobacco and smoking products,0.608,Other goods and services
+3,Cigarettes,0.529,Tobacco and smoking products
+3,Tobacco products other than cigarettes,0.06,Tobacco and smoking products
+3,Unsampled tobacco and smoking products,0.019,Tobacco and smoking products
+2,Personal care,2.551,Other goods and services
+3,Personal care products,0.678,Personal care
+4,"Hair, dental, shaving, and miscellaneous personal care products",0.364,Personal care products
+4,"Cosmetics, perfume, bath, nail preparations and implements",0.306,Personal care products
+4,Unsampled personal care products,0.008,Personal care products
+3,Personal care services,0.694,Personal care
+4,Haircuts and other personal care services,0.694,Personal care services
+3,Miscellaneous personal services,0.981,Personal care
+4,Legal services,0.25,Miscellaneous personal services
+4,Funeral expenses,0.14,Miscellaneous personal services
+4,Laundry and dry cleaning services,0.22,Miscellaneous personal services
+4,Apparel services other than laundry and dry cleaning,0.03,Miscellaneous personal services
+4,Financial services,0.229,Miscellaneous personal services
+4,Unsampled items,0.111,Miscellaneous personal services
