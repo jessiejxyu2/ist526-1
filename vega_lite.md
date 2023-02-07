@@ -883,6 +883,72 @@ Since `filter` can be used with a `selection`, it can go with a parameter ,`para
 Furthermore, without using `filter`, we can change the values of `x` and `y` by using `"scale" : {"domain": [start, end]}` for input data. Note that `range' is used for selecting output span, which is different.   
 
 
+More examples:
+```
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "transform": [
+    {"timeUnit": "yearmonthdate", "field": "Date", "as": "Date"},
+    {"filter": " (datum.Open > 160)"},
+    {"filter": " (datum.Open < 280)"},
+    {"filter": {"field": "Date", "lt": {"year": 2019, "month": 12, "date": 21}}}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "circle", "tooltip": true, "clip": true},
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal"},
+        "y": {"field": "Open", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "bar", "tooltip": true, "clip": true},
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "bin":true},
+        "y": {"aggregate": "count", "type": "quantitative"}
+      }
+    }
+  ]
+}
+```
 
+An interactive version of the same graph:
+```
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "transform": [
+    {"timeUnit": "yearmonthdate", "field": "Date", "as": "Date"},
+    {"filter": " (datum.Open > 160)"},
+    {"filter": " (datum.Open < 280)"},
+    {"filter": {"field": "Date", "lt": {"year": 2019, "month": 12, "date": 21}}}
+  ],
+  "layer": [
+    {
+      "params": [{"name": "pts", "select": {"type": "interval"}}],
+      "mark": {"type": "circle", "tooltip": true, "clip": true},
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal"},
+        "y": {"field": "Open", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "bar", "tooltip": true, "clip": true},
+      "transform": [{"filter": {"param": "pts"}}],
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "bin": true},
+        "y": {"aggregate": "count", "type": "quantitative"}
+      }
+    }
+  ]
+}
+```
 
 If you've made this far, congratuations! You now have working knowledge with vega-lite now. 
