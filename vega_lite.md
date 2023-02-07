@@ -147,8 +147,134 @@ Can you transpose the bars? Easy-peesy. Just swap the axes.
 }
 ```
 
-# Tabular format vs Long format [Multiple lines]
-## Why necessary? 
+Since we are interested in trend, let's switch to `line` again.
+```
+{
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+  "width": 400,
+  "height": 300,
+  "mark": {"type" :"bar", "tooltip": true},
+  "encoding": {        
+    "y": {"field": "Date", "type": "temporal", "timeUnit":"month"},
+    "x": {"field": "Open", "type": "quantitative", "aggregate": "mean"},
+  }
+}
+```
+
+
+# Overlay: Layers and Rules
+Often, we need a reference line to compare. What is a good reference? A `mean` line? Let's try it.
+We will add the reference line as a layer. Here is a snippet for two layers
+
+```
+{
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},  
+  "width": 400,
+  "height": 300,
+
+  "layers": [
+    { },
+    { },
+  ]
+}
+```
+
+Let's complete the above snippet: 
+```
+{
+  "width": 400,
+  "height": 300,
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+
+  "layer": [ 
+    {
+      "mark": {"type" :"line", "tooltip": true},
+      "encoding": {        
+        "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},   
+        "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},
+        
+      }
+    },
+    {
+      "mark": {"type" :"rule"},
+      "encoding": {        
+        "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},                
+      },
+    }, 
+  ],
+}
+```
+The rule is pretty bland. How do I change the color and size of this `rule`. 
+Use `color` and `size` attributes with `value` field. See below:
+
+```
+{
+  "width": 400,
+  "height": 300,
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+
+  "layer": [ 
+    {
+      "mark": {"type" :"line", "tooltip": true},
+      "encoding": {        
+        "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},   
+        "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},
+        
+      }
+    },
+    {
+      "mark": {"type" :"rule"},
+      "encoding": {        
+        "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},        
+        "color": {"value":"red"},
+        "size" : {"value":2.0},
+      },
+    } 
+  ],
+}
+```
+
+Can you add another layer with a green `max` line. Why not? Let's try:
+```
+{
+  "width": 400,
+  "height": 300,
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+
+  "layer": [ 
+    {
+      "mark": {"type" :"line", "tooltip": true},
+      "encoding": {        
+        "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},   
+        "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},
+        
+      }
+    },
+    {
+      "mark": {"type" :"rule"},
+      "encoding": {        
+        "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},        
+        "color": {"value":"red"},
+        "size" : {"value":2.0},
+      },
+    },
+    {
+      "mark": {"type" :"rule"},
+      "encoding": {        
+        "y": {"field": "Open", "type": "quantitative", "aggregate":"max"},        
+        "color": {"value":"green"},
+        "size" : {"value":2.0},
+      },
+    }, 
+  ],
+}
+```
+
+
+
+# Facet, Repeat, Rows and Columns
+## Tabular format vs Long format [Multiple lines]
+### Why is it necessary? 
 To draw multiple lines; Vega-lite prefers long format over tablular format. We can use a `transform` function named `fold` to unroll a table into a long format. 
 It internally creates `key`:`value` pairs for the columns. 
 [more] (https://vega.github.io/vega-lite/docs/fold.html)
@@ -166,7 +292,7 @@ It internally creates `key`:`value` pairs for the columns.
   }
 }
 ```
-Why only one line? Where is the other (Open vs. Close). We need `color`.
+Why only one line? Where is the other (Open vs. Close). We need `color`, a pre-attentive variable, to separate them.
 
 ```
 {
@@ -234,10 +360,18 @@ Hard to compare? Let's get back to `line` mark to see the trend.
 }
 ```
 
-Nice. We need a reference line to compare. What is a good reference? A `mean` line? Let's try.
+How do I add a reference line to all rows and columns? Well, we can do it by layers, right? Unfortunately, not. Vega-lite does not support rows/columns in layers. We need to use `facets` instead. 
 
-# Overlay: Layers and Rules
-Here is a snippet for two layers
+```
+{
+  "facet": {
+    ... // Facet definition
+  },
+  "spec": ...  // Specification
+}
+```
+
+Here is a complete example:
 ```
 {
   "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
@@ -245,63 +379,49 @@ Here is a snippet for two layers
   "width": 400,
   "height": 300,
 
-  "layers": [
-    { },
-    { },
-  ]
+  "facet": {"column": {"field": "key"}},
+  "spec": {
+    "mark": {"type" :"line", "tooltip": true},
+    "encoding": {        
+      "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},   
+      "y": {"field": "value", "type": "quantitative", "aggregate":"mean"},
+      "color": {"field": "key"},      
+    }
+  }
 }
 ```
 
-Let's complete the above snippet: 
-
-
-
-Facet, repeat, layer
-
-# mark type: rule
+Great! Can we add a reference line now? Yes. Check it out.
+```
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
-  
-  "layer":
-  [
-    {
-      // "mark": "line",
-      "mark": {"type" :"line", "tooltip": true},
-      // "mark": {"type" :"area", "tooltip": true},
-      "width": 500,
-      "height": 300,
-      // "transform": [{"fold": ["Open", "Close"]}],
+  "transform": [{"fold": ["Open", "Close"]}],
+  "width": 400,
+  "height": 300,
 
-      "encoding": {
-        // "x": {"field": "Date"},
-        // "x": {"field": "Date", "type": "temporal"},
-        "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},
-        // "y": {"field": "Open"},
-        // "y": {"field": "Open", "type": "quantitative"},
-        "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},
-        // "y": {"field": "value", "type": "quantitative"},
-        // "y": {"field": "value", "type": "quantitative", "aggregate":"mean"},
-        // "y": {"field": ["Open", "Close"], "type": "quantitative"},
-        // "y": {"field": "Open", "type": "quantitative", "aggregate": "mean"}, 
-        // "tooltip": {"field": "Open", "type": "quantitative"},      
-        // "color": {"field": "key", "type": "nominal"},
-        // "column": {"field": "key", "type": "nominal"},
-      }
-    },
-    {
-    "mark": {"type" :"rule"},
-    "encoding": {        
-        "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},        
-        "color": {"value":"red"},
-        "size" : {"value":2.0},
+  "facet": {"column": {"field": "key"}},
+  "spec": {
+    "layer": [
+      {
+        "mark": {"type" :"line", "tooltip": true},
+        "encoding": {        
+          "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},   
+          "y": {"field": "value", "type": "quantitative", "aggregate":"mean"},
+          "color": {"field": "key"},          
+        }
       },
-    }
-  ],
-
+      {        
+        "mark": {"type" :"rule"},
+        "encoding": {        
+          "y": {"field": "value", "type": "quantitative", "aggregate":"max"},        
+          "color": {"value":"green"},
+          "size" : {"value":1.0},
+        }
+      },      
+    ],
+  }
 }
-
-
+```
 
 
 ## repeat rows
@@ -343,36 +463,7 @@ Facet, repeat, layer
     },
  }
 
-## layer approach:
-{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
-  "width": 500,
-  "height": 300,
- 
-  "layer":
-  [
-    {
-      "mark": {"type" :"line", "tooltip": true},
-      // "mark": {"type" :"area", "tooltip": true},
-      "encoding": {
-        "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},        
-        "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},
-        "color" :{"value": "blue"},
-      }
-    },
-    {
-      "mark": {"type" :"line", "tooltip": true},
-      // "mark": {"type" :"area", "tooltip": true},
-      "encoding": {
-        "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},        
-        "y": {"field": "Close", "type": "quantitative", "aggregate":"min"},
-        "color" :{"value": "red"},
-      }
-    }
-  ],
 
-}
 
 # scatter plot matrix
 {
