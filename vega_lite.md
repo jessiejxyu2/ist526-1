@@ -463,7 +463,7 @@ Here is an example:
 
 
 
-# scatter plot matrix
+# Scatter plot matrix
 Repeat is a powerful operator. It can be used to create a scatter-plot matrix. 
 
 ```
@@ -490,17 +490,160 @@ Repeat is a powerful operator. It can be used to create a scatter-plot matrix.
 
 ```
 
-# Interaction: selection
-
+# Interaction: Selection
+Interaction makes data alive. The basic template for an interaction is as follows:
+```
+// A Single View Specification
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  ...,
+  "params": [  // An array of named parameters.
+    {
+      "name": ...,
+      "select": { // Selection
+        "type": ...,
+        ...
+      }
+    }
+  ],
+  "mark": ...,
+  "encoding": ...,
+  ...
+}
+```
+For example, the following code selects a point on mouse click.
+```
+{  
   "width": 500,
   "height": 300,
  
   "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
   
   "params": [{
-    "name": "pts", 
+    "name": "anything", 
+    "select" : {"type": "point"},
+  }],  
+
+  "mark": {"type" :"circle"},
+  "encoding": {
+    "x": {
+      "field": "Date", 
+      "type": "temporal", 
+      "timeUnit":"month",       
+    },
+    
+    "y": {
+      "field": "Open", 
+       "type": "quantitative", 
+       "aggregate":"mean",      
+    },
+  }
+ }
+
+```
+It is hardly useful, isn't? Why? Because we did not change the color or size to indicate our selection. Let's add those two attributes:
+```
+{  
+  "width": 500,
+  "height": 300,
+ 
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+  
+  "params": [{
+    "name": "anything", 
+    "select" : {"type": "point"},
+  }],  
+
+  "mark": {"type" :"circle"},
+  "encoding": {
+    "x": {
+      "field": "Date", 
+      "type": "temporal", 
+      "timeUnit":"month",       
+    },
+    
+    "y": {
+      "field": "Open", 
+       "type": "quantitative", 
+       "aggregate":"mean",      
+    },
+    "color": {
+      "condition":{
+        "param": "anything",         
+        "value": "orange",          
+      },
+      "value": "grey",            
+    },
+
+    "size":{      
+      "condition":{
+        "param": "anything", 
+        "value": 200,
+      },
+      "value": 40,      
+    },   
+  }
+ }
+
+```
+
+See the difference? We also update our selection from a single point to a range. 
+```
+{  
+  "width": 500,
+  "height": 300,
+ 
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+  
+  "params": [{
+    "name": "anything", 
+    "select" : {"type": "interval"},
+  }],  
+
+  "mark": {"type" :"circle"},
+  "encoding": {
+    "x": {
+      "field": "Date", 
+      "type": "temporal", 
+      "timeUnit":"month",       
+    },
+    
+    "y": {
+      "field": "Open", 
+       "type": "quantitative", 
+       "aggregate":"mean",      
+    },
+    "color": {
+      "condition":{
+        "param": "anything",         
+        "value": "orange",          
+      },
+      "value": "grey",            
+    },
+
+    "size":{      
+      "condition":{
+        "param": "anything", 
+        "value": 200,
+      },
+      "value": 40,      
+    },   
+  }
+ }
+
+```
+Draw a region with your mouse to see the effect. 
+
+## Interaction with repeat
+
+```
+{  
+  "width": 500,
+  "height": 300,
+ 
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+  
+  "params": [{
+    "name": "anything", 
     // "select" : {"type": "point"},
     // "select" : {"type": "point", "resolve": "global"},
     // "select" : {"type": "point", "on":"mouseover"},
@@ -518,13 +661,12 @@ Repeat is a powerful operator. It can be used to create a scatter-plot matrix.
     "y": {
       "field": "Open", 
        "type": "quantitative", 
-       "aggregate":"mean",
-      //  "scale":{"domain": [100, 230]}
+       "aggregate":"mean",      
     },
 
     "color": {
       "condition":{
-        "param": "pts",         
+        "param": "anything",         
         "value": "orange",          
       },
       "value": "grey",            
@@ -532,13 +674,15 @@ Repeat is a powerful operator. It can be used to create a scatter-plot matrix.
 
     "size":{      
       "condition":{
-        "param": "pts", 
+        "param": "anything", 
         "value": 200,
       },
       "value": 40,      
     },    
   }
  }
+```
+
 
 ## 
 {
