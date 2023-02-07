@@ -772,7 +772,33 @@ Supported boolean operations are  `equal`, `lt`, `lte`, `gt`, `gte`, `range`, `o
   },
   "width": 400,
   "height": 300,
-  "mark": {"type": "line", "tooltip": true, "clip": true},
+  "mark": {"type": "circle", "tooltip": true, "clip": true},
+  "transform": [
+    {
+      "filter": {
+        "and": [
+          {"field": "Open", "lt": 150},
+          {"field": "Date", "lt": {"year": 2022, "month": "jun", "date": 1}}
+        ]
+      }
+    }
+  ],
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y": {"field": "Open", "type": "quantitative"}
+  }
+}
+```
+
+
+```
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "mark": {"type": "circle", "tooltip": true, "clip": true},
   "transform": [{"filter": "datum.Open < 180"}],
   "encoding": {
     "x": {"field": "Date", "type": "temporal"},
@@ -789,7 +815,7 @@ or
   },
   "width": 400,
   "height": 300,
-  "mark": {"type": "line", "tooltip": true, "clip": true},
+  "mark": {"type": "circle", "tooltip": true, "clip": true},
   "transform": [{"filter": {"field": "Open", "lt": 180}}],
   "encoding": {
     "x": {"field": "Date", "type": "temporal"},
@@ -807,7 +833,7 @@ A more complicated filter is as follows:
   },
   "width": 400,
   "height": 300,
-  "mark": {"type": "line", "tooltip": true, "clip": true},
+  "mark": {"type": "circle", "tooltip": true, "clip": true},
   "transform": [
     {
       "filter": {
