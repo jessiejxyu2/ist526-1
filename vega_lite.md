@@ -633,102 +633,53 @@ See the difference? We also update our selection from a single point to a range.
 ```
 Draw a region with your mouse to see the effect. 
 
-## Interaction with repeat
+## Interaction with `repeat`
+When `interaction` happens within `repeat` or `facet` the `params` attribute becomes a part of the `spec` attribute. Also, we need to specify `resolve` field. See [more](https://vega.github.io/vega-lite/docs/selection.html).
+Here is our running example:
 
 ```
 {  
   "width": 500,
-  "height": 300,
- 
-  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+  "height": 500,
   
-  "params": [{
-    "name": "anything", 
-    // "select" : {"type": "point"},
-    // "select" : {"type": "point", "resolve": "global"},
-    // "select" : {"type": "point", "on":"mouseover"},
-    "select" : {"type": "interval"}
-  }],  
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},  
 
-  "mark": {"type" :"circle"},
-  "encoding": {
-    "x": {
-      "field": "Date", 
-      "type": "temporal", 
-      "timeUnit":"week",       
-    },
-    
-    "y": {
-      "field": "Open", 
-       "type": "quantitative", 
-       "aggregate":"mean",      
-    },
+  "repeat": {
+    "column": ["Open", "Close"],
+    "row": ["Open", "Close"],
+  },
 
-    "color": {
-      "condition":{
-        "param": "anything",         
-        "value": "orange",          
+  "spec":{
+      "params": [{
+        "name": "anything", 
+        "select" : {"type": "interval", "resolve":"global"},
+      }],  
+
+    "mark": {"type" :"circle", "tooltip": true},
+
+    "encoding": {
+      "x": {"field": {"repeat": "column"}, "type": "quantitative" },
+      "y": {"field": {"repeat": "row"},  "type": "quantitative"},    
+
+      "color": {
+        "condition":{
+          "param": "anything",         
+          "value": "orange",          
+        },
+        "value": "grey",            
       },
-      "value": "grey",            
-    },
 
-    "size":{      
-      "condition":{
-        "param": "anything", 
-        "value": 200,
-      },
-      "value": 40,      
-    },    
-  }
+      "size":{      
+          "condition":{
+            "param": "anything", 
+            "value": 200,
+          },
+          "value": 40,      
+      },   
+    }
+  },
  }
+
 ```
 
-
-## 
-{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
-  "height": 300,
- 
-  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
-  
-  "params": [{
-    "name": "pts", 
-    // "select" : {"type": "point"},
-    // "select" : {"type": "point", "resolve": "global"},
-    // "select" : {"type": "point", "on":"mouseover"},
-    "select" : {"type": "interval"}
-  }],  
-
-  "mark": {"type" :"circle"},
-  "encoding": {
-    "x": {
-      "field": "Date", 
-      "type": "temporal", 
-      "timeUnit":"week",       
-    },
-    
-    "y": {
-      "field": "Open", 
-       "type": "quantitative", 
-       "aggregate":"mean",
-      //  "scale":{"domain": [100, 230]}
-    },
-
-    "color": {
-      "condition":{
-        "param": "pts",         
-        "value": "orange",          
-      },
-      "value": "grey",            
-    },
-
-    "size":{      
-      "condition":{
-        "param": "pts", 
-        "value": 200,
-      },
-      "value": 40,      
-    },    
-  }
- }
+If you made this far, congratuations! You must have working knowledge with vega-lite now. 
