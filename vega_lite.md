@@ -682,4 +682,80 @@ Here is our running example:
 
 ```
 
-If you made this far, congratuations! You must have working knowledge with vega-lite now. 
+# Dashboard: Concatenation
+A dashboard is a collection of multiple visualization put together logically. We can use vertial or horizontal concatenation operator to do so.
+Here is the template:
+
+```
+{
+  "vconcat": [
+    {},
+    {},
+  ],
+  ...
+}
+```
+
+or 
+```
+{
+  "hconcat": [
+    {},
+    {}
+  ],
+  
+}
+```
+
+Let's try an example by putting two of our previous graphs together.
+
+```
+{
+  "vconcat": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+      },
+      "width": 400,
+      "height": 300,
+      "mark": {"type": "line", "tooltip": true},
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "timeUnit": "month"},
+        "y": {"field": "Open", "type": "quantitative", "aggregate": "mean"}
+      }
+    },
+    {
+      "width": 500,
+      "height": 500,
+      "data": {
+        "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+      },
+      "repeat": {"column": ["Open", "Close"], "row": ["Open", "Close"]},
+      "spec": {
+        "params": [
+          {
+            "name": "anything",
+            "select": {"type": "interval", "resolve": "global"}
+          }
+        ],
+        "mark": {"type": "circle", "tooltip": true},
+        "encoding": {
+          "x": {"field": {"repeat": "column"}, "type": "quantitative"},
+          "y": {"field": {"repeat": "row"}, "type": "quantitative"},
+          "color": {
+            "condition": {"param": "anything", "value": "orange"},
+            "value": "grey"
+          },
+          "size": {
+            "condition": {"param": "anything", "value": 200},
+            "value": 40
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+
+If you've made this far, congratuations! You now have working knowledge with vega-lite now. 
