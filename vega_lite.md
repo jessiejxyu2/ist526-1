@@ -98,7 +98,7 @@ Makes no sense, right? This is because we did not aggregate the data. Let's use 
   }
 }
 ```
-Readable, right?
+Readable, right? 
 
 ## Try out different `mark` types
 What is mark? What are the available marks?
@@ -116,7 +116,36 @@ Are marks related to pre-attentive variables?
   }
 }
 ```
-  
+
+Circles are not good. Let try bars. 
+
+```
+{
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+  "width": 400,
+  "height": 300,
+  "mark": {"type" :"bar", "tooltip": true},
+  "encoding": {        
+    "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},
+    "y": {"field": "Open", "type": "quantitative", "aggregate": "mean"},
+  }
+}
+```
+
+Can you transpose the bars? Easy-peesy. Just swap the axes.
+
+```
+{
+  "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
+  "width": 400,
+  "height": 300,
+  "mark": {"type" :"bar", "tooltip": true},
+  "encoding": {        
+    "y": {"field": "Date", "type": "temporal", "timeUnit":"month"},
+    "x": {"field": "Open", "type": "quantitative", "aggregate": "mean"},
+  }
+}
+```
 
 # Tabular format vs Long format [Multiple lines]
 ## Why necessary? 
