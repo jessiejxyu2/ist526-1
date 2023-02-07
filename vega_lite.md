@@ -989,5 +989,48 @@ An interactive version of the same graph:
 }
 ```
 
+overview+detail
+```
+{
+  "vconcat": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+      },
+      "width": 400,
+      "height": 300,
+      "params": [
+        {
+          "name": "pts",
+          "select": {
+            "type": "interval",
+            "encodings": ["x"],
+            "resolve": "global"
+          }
+        }
+      ],
+      "mark": {"type": "line", "tooltip": true},
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "timeUnit": "month"},
+        "y": {"field": "Open", "type": "quantitative", "aggregate": "mean"}
+      }
+    },
+    {
+      "width": 500,
+      "height": 500,
+      "data": {
+        "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+      },
+      "transform": [{"filter": {"param": "pts"}}],
+      "mark": {"type": "area", "tooltip": true},
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "timeUnit": "day"},
+        "y": {"field": "Open", "type": "quantitative", "aggregate": "mean"}
+      }
+    }
+  ]
+}
+```
+
 
 If you've made this far, congratuations! You now have working knowledge with vega-lite now. 
