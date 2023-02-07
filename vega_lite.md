@@ -765,6 +765,66 @@ Supported boolean operations are  `equal`, `lt`, `lte`, `gt`, `gte`, `range`, `o
 
 `filter` needs a `transform` operation. 
 
+
+```
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "mark": {"type": "circle", "tooltip": true, "clip": true},
+  "transform": [{"filter": "datum.Open < 180"}],
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y": {"field": "Open", "type": "quantitative"}
+  }
+}
+
+```
+
+or,
+```
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "mark": {"type": "circle", "tooltip": true, "clip": true},
+  "transform": [{"filter": {"field": "Open", "lt": 180}}],
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y": {"field": "Open", "type": "quantitative"}
+  }
+}
+
+```
+
+How do I use multiple filters? Note that the date time field is problematic to use. Check out the following examples:
+```
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "mark": {"type": "circle", "tooltip": true, "clip": true},
+  "transform": [
+    {"timeUnit": "yearmonthdate", "field": "Date", "as": "Date"},
+    {"filter": " (datum.Open > 160)"},
+    {"filter": " (datum.Open < 180)"},
+    {"filter": {"field": "Date", "lt": {"year": 2019, "month": 12, "date": 21}}}
+  ],
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y": {"field": "Open", "type": "quantitative"}
+  }
+}
+```
+
+Note that we used multiple `filter` parameters within `transform` to apply them all at once. 
+
 ```
 {
   "data": {
@@ -791,39 +851,7 @@ Supported boolean operations are  `equal`, `lt`, `lte`, `gt`, `gte`, `range`, `o
 ```
 
 
-```
-{
-  "data": {
-    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
-  },
-  "width": 400,
-  "height": 300,
-  "mark": {"type": "circle", "tooltip": true, "clip": true},
-  "transform": [{"filter": "datum.Open < 180"}],
-  "encoding": {
-    "x": {"field": "Date", "type": "temporal"},
-    "y": {"field": "Open", "type": "quantitative"}
-  }
-}
-
-```
 or
-```
-{
-  "data": {
-    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
-  },
-  "width": 400,
-  "height": 300,
-  "mark": {"type": "circle", "tooltip": true, "clip": true},
-  "transform": [{"filter": {"field": "Open", "lt": 180}}],
-  "encoding": {
-    "x": {"field": "Date", "type": "temporal"},
-    "y": {"field": "Open", "type": "quantitative"}
-  }
-}
-
-```
 
 A more complicated filter is as follows:
 ```
