@@ -757,5 +757,78 @@ Let's try an example by putting two of our previous graphs together.
 }
 ```
 
+# Filter
+[Filter guide](https://vega.github.io/vega-lite/docs/filter.html)
+Key idea: (1) use a placeholder, `datum`, to refer to data (e.g., `{"filter": "datum.b2 > 60"}`) and (2) use a boolean predicate that returns True or False.
+
+Supported boolean operations are  `equal`, `lt`, `lte`, `gt`, `gte`, `range`, `oneOf`, or `valid` (e.g., `{"timeUnit": "year", "field": "Year", "lte": "2000"}`).
+
+`filter` needs a `transform` operation. 
+
+```
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "mark": {"type": "line", "tooltip": true, "clip": true},
+  "transform": [{"filter": "datum.Open < 180"}],
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y": {"field": "Open", "type": "quantitative"}
+  }
+}
+
+```
+or
+```
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "mark": {"type": "line", "tooltip": true, "clip": true},
+  "transform": [{"filter": {"field": "Open", "lt": 180}}],
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y": {"field": "Open", "type": "quantitative"}
+  }
+}
+
+```
+
+A more complicated filter is as follows:
+```
+{
+  "data": {
+    "url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "mark": {"type": "line", "tooltip": true, "clip": true},
+  "transform": [
+    {
+      "filter": {
+        "and": [
+          {"field": "Open", "lt": 180},
+          {"field": "Date", "gt": {"year": 2019, "month": "jun", "date": 1}}
+        ]
+      }
+    }
+  ],
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y": {"field": "Open", "type": "quantitative"}
+  }
+}
+```
+
+Since `filter` can be used with a `selection`, it can go with a parameter ,`params`, to set up. 
+Furthermore, without using `filter`, we can change the values of `x` and `y` by using `"scale" : {"domain": [start, end]}` for input data. Note that `range' is used for selecting output span, which is different.   
+
+
+
 
 If you've made this far, congratuations! You now have working knowledge with vega-lite now. 
