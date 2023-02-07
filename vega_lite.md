@@ -10,7 +10,7 @@ Take a look at the data: https://github.com/smbillah/ist526/blob/main/FB_data.cs
 
 
 # Simple visualization:
-## A line graph showing 
+## A line graph 
 
 Code:
 ```
@@ -24,7 +24,7 @@ Code:
 }
 ```
 
-Looks out of control, right? Let's fix the height and the width.
+Looks messy, right? Let's fix the height and the width.
 
 
 ```
