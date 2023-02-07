@@ -424,9 +424,22 @@ Great! Can we add a reference line now? Yes. Check it out.
 ```
 
 
-## repeat rows
+## Repeat Rows and Columns
+`repeat` is similar to `facet`. However, a `facet` locks an axis (either X or Y) for all data points in sub-plots but a `repeat` does not. In other words, sub-plots in a `facet` are dependent, but they are independent in a `repeat`.
+
+The template for a `repeat` is as follows:
+```
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "repeat": {
+    ... // Repeat definition
+  },
+  "spec": ... // Specification
+}
+```
+
+Here is an example:
+```
+{
   "width": 500,
   "height": 300,
  
@@ -437,39 +450,26 @@ Great! Can we add a reference line now? Yes. Check it out.
   "spec":
     {
       "data": {"url": "https://raw.githubusercontent.com/smbillah/ist526/main/FB_data.csv"},
-      // "transform": [{"fold": ["Open", "Close"]}],
-
-      // "mark": "line",
-      // "mark": {"type" :"line", "tooltip": true},
-      "mark": {"type" :"area", "tooltip": true},
-
+      
+      "mark": {"type" :"line", "tooltip": true},
       "encoding": {
-        // "x": {"field": "Date"},
-        // "x": {"field": "Date", "type": "temporal"},
         "x": {"field": "Date", "type": "temporal", "timeUnit":"month"},
-        // "y": {"field": "Open"},
-        // "y": {"field": "Open", "type": "quantitative"},
-        // "y": {"field": "Open", "type": "quantitative", "aggregate":"mean"},
-        // "y": {"field": "value", "type": "quantitative"},
-        // "y": {"field": "value", "type": "quantitative", "aggregate":"mean"},
         "y": {"field": {"repeat": "column"},  "type": "quantitative", "aggregate":"mean"},
-
-        // "y": {"field": ["Open", "Close"], "type": "quantitative"},
-        // "y": {"field": "Open", "type": "quantitative", "aggregate": "mean"}, 
-        // "tooltip": {"field": "Open", "type": "quantitative"},      
-        // "color": {"field": "key", "type": "nominal"},
-        // "column": {"field": "key", "type": "nominal"},
       }
     },
  }
 
+```
+
 
 
 # scatter plot matrix
+Repeat is a powerful operator. It can be used to create a scatter-plot matrix. 
+
+```
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  // "width": 500,
-  // "height": 300,
+   "width": 500,
+   "height": 500,
  
   "repeat":
   {
@@ -488,7 +488,9 @@ Great! Can we add a reference line now? Yes. Check it out.
     },
  }
 
-## selection
+```
+
+# Interaction: selection
 
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
